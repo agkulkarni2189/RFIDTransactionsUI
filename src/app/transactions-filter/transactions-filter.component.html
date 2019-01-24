@@ -1,0 +1,45 @@
+<div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4>{{title_filter}}</h4>
+            </div>
+            <div class="panel-body">
+              <div class="row">
+                  <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                    <app-locations></app-locations>
+                  </div>
+                  <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                    <app-lanes></app-lanes>
+                  </div>
+                  <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                      <app-lane-types></app-lane-types>
+                    </div>
+              </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs12">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4>{{title_export}}</h4>
+            </div>
+            <div class="panel-body" style="text-align: center;">
+              <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12"
+                  style="text-align: center;">
+                    <a href="http://localhost:8080/exportPdf" class="btn btn-secondary btn-lg">Export PDF</a>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12"
+                  style="text-align: center;">
+                    <a href="http://localhost:8080/exportXlsx" class="btn btn-secondary btn-lg">Export Excel</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>

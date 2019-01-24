@@ -1,0 +1,12 @@
+<div class="form-group">
+    <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle btn-lg" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Select Lane Type
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <div *ngFor="let lanetype of this.lanetypes">
+                    <a href="#">{{lanetype.lane_type_name}}</a>
+                </div>
+            </div>
+      </div>
+  </div>

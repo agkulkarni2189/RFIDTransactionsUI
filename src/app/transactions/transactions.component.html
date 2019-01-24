@@ -1,0 +1,28 @@
+<div class="row">
+  <table class="table table-striped">
+    <thead class="thead-dark">
+      <tr>
+        <th>Tag ID</th>
+        <th>Boom Up Request Source</th>
+        <th>Ack to Server Sent Time</th>
+        <th>HHT Boom Up Request Recd. Time</th>
+        <th>RFID Reader Boom Up Request Recd. Time</th>
+        <th>Location</th>
+        <th>Lane</th>
+        <th>Lane Type</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let transaction of transactions">
+        <td>{{transaction.tag_id}}</td>
+        <td>{{transaction.boom_up_request_source}}</td>
+        <td>{{transaction.ack_sent_time}}</td>
+        <td>{{transaction.hht_boomup_request_recd_time}}</td>
+        <td>{{transaction.rfid_boomup_request_recd_time}}</td>
+        <td>{{transaction.location_name}}</td>
+        <td>{{transaction.lane_name}}</td>
+        <td>{{transaction.lane_type_name}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
