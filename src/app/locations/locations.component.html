@@ -1,12 +1,14 @@
 <div class="form-group">
-  <div class="dropdown">
+  <label for="locationsdd">Locations:</label>
+  <select class="form-control" id="locationsdd">
+    <option *ngFor="let location of this.locations" [value]="this.location.location_id">{{this.location.location_name}}</option>
+  </select>
+  <!-- <div class="dropdown">
     <button class="btn btn-secondary dropdown-toggle btn-lg" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Select Location
       </button>
       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <div *ngFor="let location of this.locations">
-            <a href="#">{{location.location_name}}</a>
-        </div>
+        <a class="dropdown-item" *ngFor="let location of this.locations" href="#">{{location.location_name}}</a>
       </div>
-    </div>
+    </div> -->
 </div>
