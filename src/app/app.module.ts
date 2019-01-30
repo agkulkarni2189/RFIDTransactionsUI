@@ -11,6 +11,7 @@ import { LocationsComponent } from './locations/locations.component';
 import { LanesComponent } from './lanes/lanes.component';
 import { LaneTypesComponent } from './lane-types/lane-types.component';
 import { TransactionsFilterComponent } from './transactions-filter/transactions-filter.component';
+import { FlterTransactionButtonComponent } from './flter-transaction-button/flter-transaction-button.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { TransactionsFilterComponent } from './transactions-filter/transactions-
     LocationsComponent,
     LanesComponent,
     LaneTypesComponent,
-    TransactionsFilterComponent
+    TransactionsFilterComponent,
+    FlterTransactionButtonComponent
   ],
   imports: [
     BrowserModule,

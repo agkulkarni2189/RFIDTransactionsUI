@@ -1,7 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Injectable } from '@angular/core';
 import { LaneType } from './lane-type';
 import { LaneTypeService } from '../lane-type.service';
 import { Observable } from 'rxjs';
+import { MessageService } from '../message.service';
+
+@Injectable({
+  providedIn: 'root'
+})
 
 @Component({
   selector: 'app-lane-types',
@@ -11,16 +16,24 @@ import { Observable } from 'rxjs';
 export class LaneTypesComponent implements OnInit {
 
   lanetypes: LaneType[];
-  constructor(private lanetypeService: LaneTypeService) { }
+  static selectedLaneTypeID: number;
+
+  constructor(private lanetypeService: LaneTypeService, private messageService: MessageService) { }
 
   getLaneTypes(): void{
-    this.lanetypeService.getLaneTypes().subscribe(lanetypes => function(){
-      lanetypes.forEach(element => {
-        this.lanetypes.push(element);
-      });
-    });
+    this.lanetypeService.getLaneTypes().subscribe(lanetypes => this.lanetypes = lanetypes);
   }
 
+  onSelect(lanetypeID: number=0): void{
+    if(lanetypeID > 0)
+    {
+      LaneTypesComponent.selectedLaneTypeID=lanetypeID;
+      this.messageService.log("Lane Type selected: "+LaneTypesComponent.selectedLaneTypeID);
+    }
+    else
+    LaneTypesComponent.selectedLaneTypeID=0;
+  }
+  
   ngOnInit() {
     this.getLaneTypes();
   }

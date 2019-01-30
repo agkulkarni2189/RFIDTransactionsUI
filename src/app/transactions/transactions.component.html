@@ -13,7 +13,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let transaction of transactions">
+      <tr *ngFor="let transaction of this.transactions">
         <td>{{transaction.tag_id}}</td>
         <td>{{transaction.boom_up_request_source}}</td>
         <td>{{transaction.ack_sent_time}}</td>

@@ -1,7 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Injectable, SimpleChanges } from '@angular/core';
 import { Transaction } from './transaction';
 import { TransactionService } from '../transaction.service';
 import { Observable } from 'rxjs';
+
+@Injectable({
+  providedIn: 'root'
+})
 
 @Component({
   selector: 'app-transactions',
@@ -13,7 +17,7 @@ export class TransactionsComponent implements OnInit {
   constructor(private transactionService: TransactionService) { }
 
   getTransactions(): void{
-    this.transactionService.getTransactions().subscribe(transactions => this.transactions = transactions);
+    this.transactionService.getFilteredTransactions().subscribe(trans => this.transactions=trans);
   }
 
   ngOnInit() {

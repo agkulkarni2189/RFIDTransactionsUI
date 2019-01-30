@@ -1,12 +1,7 @@
 <div class="form-group">
-    <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle btn-lg" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Select Lane Type
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <div *ngFor="let lanetype of this.lanetypes">
-                    <a href="#">{{lanetype.lane_type_name}}</a>
-                </div>
-            </div>
-      </div>
+    <label for="lanetypesdd">Lane Types:</label>
+    <select class="form-control" id="lanetypesdd" (change)="onSelect($event.target.value)">
+        <option [value]="0">--SELECT--</option>
+        <option *ngFor="let lanetype of this.lanetypes" [value]="lanetype.lane_type_id">{{lanetype.lane_type_name}}</option>
+    </select>
   </div>
