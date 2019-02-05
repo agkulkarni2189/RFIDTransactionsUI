@@ -16,7 +16,7 @@ import { MessageService } from '../message.service';
 export class LaneTypesComponent implements OnInit {
 
   lanetypes: LaneType[];
-  static selectedLaneTypeID: number;
+  static selectedLaneTypeID: number=0;
 
   constructor(private lanetypeService: LaneTypeService, private messageService: MessageService) { }
 

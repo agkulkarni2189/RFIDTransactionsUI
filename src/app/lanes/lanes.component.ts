@@ -16,7 +16,7 @@ import { MessageService } from '../message.service';
 export class LanesComponent implements OnInit {
 
   lanes: Lane[];
-  static selectedLaneID: number;
+  static selectedLaneID: number=0;
   constructor(private laneService: LaneService, private messageService: MessageService) { }
 
   getLanes(): void{

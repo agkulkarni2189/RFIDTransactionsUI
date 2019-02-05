@@ -9,6 +9,7 @@ import { Lane } from './lanes/lane';
 import { LaneType } from './lane-types/lane-type';
 import { Location } from './locations/location';
 import { stringify } from '@angular/core/src/util';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -19,9 +20,10 @@ export class TransactionService {
 
   getParamExt: string;
   dataUrl: string;
+  private Transactions = new BehaviorSubject (this.getFilteredTransactions('http://localhost:8080/exportJSON'));
+  currentFilteredTransactions = this.Transactions.asObservable();
 
-  getFilteredTransactions(selectedLocationID: number=0, selectedLaneID: number=0, selectedLaneTypeID: number=0): Observable<Transaction[]>{
-    this.dataUrl = 'http://localhost:8080/exportJSON';
+  getGetParamExt(selectedLocationID: number=0, selectedLaneID: number=0, selectedLaneTypeID: number=0, fromDate: string=null, toDate: string=null): void{
     this.getParamExt = '';
 
     if(selectedLocationID > 0)
@@ -48,9 +50,36 @@ export class TransactionService {
         this.getParamExt += "&LaneTypeID="+selectedLaneTypeID;
     }
 
+    if(fromDate != null)
+    {
+      if(this.getParamExt.length <= 0)
+        this.getParamExt += "?FromCreationDate="+fromDate;
+      else
+        this.getParamExt += "&FromCreationDate="+fromDate;
+    }
+
+    if(toDate != null)
+    {
+      if(this.getParamExt.length <= 0)
+        this.getParamExt += "?ToCreationDate="+toDate;
+      else
+        this.getParamExt += "&ToCreationDate="+toDate;
+    }
+  }
+
+  getFilteredTransactions(dataUrl: string=null,selectedLocationID: number=0, selectedLaneID: number=0, selectedLaneTypeID: number=0, fromDate: string=null, toDate: string=null): Observable<Transaction[]>{
+    this.dataUrl = dataUrl;
+    this.getGetParamExt(selectedLocationID, selectedLaneID, selectedLaneTypeID, fromDate, toDate);
     if(this.getParamExt.length > 0)
-      this.dataUrl += this.getParamExt;
+    this.dataUrl += this.getParamExt;
+
+    console.log('Service URL: '+this.dataUrl);
 
     return this.httpClient.get<Transaction[]>(this.dataUrl).pipe(tap(_ => this.messageService.log('getFilteredTransactions(): fetched transactions')), catchError(this.messageService.handleError('getFilteredTransactions', [])));
+  }
+
+  setFilteredTransactions(transactions: Observable<Transaction[]>)
+  {
+    this.Transactions.next(transactions)
   }
 }

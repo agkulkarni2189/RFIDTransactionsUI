@@ -1,4 +1,4 @@
-import { Component, OnInit, Injectable } from '@angular/core';
+import { Component, OnInit, Injectable, Input } from '@angular/core';
 import { LocationService } from '../location.service';
 import { Location } from './location';
 import { MessageService } from '../message.service';
@@ -13,7 +13,7 @@ import { MessageService } from '../message.service';
 })
 export class LocationsComponent implements OnInit {
   locations: Location[];
-  static selectedLocationID: number;
+  @Input() static selectedLocationID: number=0;
 
   constructor(private locationService: LocationService, private messageService: MessageService) { }
 

@@ -17,9 +17,27 @@
                     </div>
               </div>
               <div class="row">
-                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pull-right">
-                    <app-flter-transaction-button></app-flter-transaction-button>
+                  <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                    <div class="form-group">
+                      <label for="fromCreationDate"> Select From Date: </label>
+                        <input type="date" class="form-control"
+                          id="fromCreationDate" (change)="onChangeFromDate($event.target.value)" /> <span class="input-group-addon">
+                          <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                    </div>
                   </div>
+                  <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                    <div class="form-group">
+                      <label for="toCreationDate"> Select To Date: </label>
+                        <input type="date" class="form-control"
+                          data-provider="datepicker" id="toCreationDate" (change)="onChangeToDate($event.target.value)" />
+                    </div>
+                  </div>
+              </div>
+              <div class="row" style="text-align: right;">
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                      <app-flter-transaction-button></app-flter-transaction-button>
+                    </div>
               </div>
             </div>
         </div>
@@ -35,11 +53,11 @@
               <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12"
                   style="text-align: center;">
-                    <a href="http://localhost:8080/exportPdf" class="btn btn-secondary btn-lg">Export PDF</a>
+                  <app-export-pdf></app-export-pdf>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12"
                   style="text-align: center;">
-                    <a href="http://localhost:8080/exportXlsx" class="btn btn-secondary btn-lg">Export Excel</a>
+                    <app-export-excel></app-export-excel>
                 </div>
               </div>
             </div>

@@ -12,6 +12,8 @@ import { LanesComponent } from './lanes/lanes.component';
 import { LaneTypesComponent } from './lane-types/lane-types.component';
 import { TransactionsFilterComponent } from './transactions-filter/transactions-filter.component';
 import { FlterTransactionButtonComponent } from './flter-transaction-button/flter-transaction-button.component';
+import { ExportPdfComponent } from './export-pdf/export-pdf.component';
+import { ExportExcelComponent } from './export-excel/export-excel.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { FlterTransactionButtonComponent } from './flter-transaction-button/flte
     LanesComponent,
     LaneTypesComponent,
     TransactionsFilterComponent,
-    FlterTransactionButtonComponent
+    FlterTransactionButtonComponent,
+    ExportPdfComponent,
+    ExportExcelComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,7 +1,11 @@
-import { Component, OnInit, Injectable, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Injectable, SimpleChanges, Input } from '@angular/core';
 import { Transaction } from './transaction';
 import { TransactionService } from '../transaction.service';
 import { Observable } from 'rxjs';
+import { LocationsComponent } from '../locations/locations.component';
+import { LanesComponent } from '../lanes/lanes.component';
+import { LaneTypesComponent } from '../lane-types/lane-types.component';
+import { TransactionsFilterComponent } from '../transactions-filter/transactions-filter.component';
 
 @Injectable({
   providedIn: 'root'
@@ -13,15 +17,15 @@ import { Observable } from 'rxjs';
   styleUrls: ['./transactions.component.css']
 })
 export class TransactionsComponent implements OnInit {
-  transactions: Transaction[];
+  @Input() transactions: Transaction[];
   constructor(private transactionService: TransactionService) { }
 
   getTransactions(): void{
-    this.transactionService.getFilteredTransactions().subscribe(trans => this.transactions=trans);
+    this.transactionService.getFilteredTransactions('http://localhost:8080/exportJSON', LocationsComponent.selectedLocationID, LanesComponent.selectedLaneID, LaneTypesComponent.selectedLaneTypeID, TransactionsFilterComponent.fromDate, TransactionsFilterComponent.toDate).subscribe(trans => this.transactions=trans);
   }
 
   ngOnInit() {
-    this.getTransactions();
+    this.transactionService.currentFilteredTransactions.subscribe(trans => trans.subscribe(trans => this.transactions = trans));
   }
 
 }
