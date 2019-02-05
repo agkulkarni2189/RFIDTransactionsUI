@@ -19,10 +19,6 @@ export class LanesComponent implements OnInit {
   static selectedLaneID: number=0;
   constructor(private laneService: LaneService, private messageService: MessageService) { }
 
-  getLanes(): void{
-    this.laneService.getLanes().subscribe(lanes => this.lanes = lanes);
-  }
-  
   onSelect(laneID: number=0): void{
       if(laneID > 0)
       {
@@ -34,7 +30,7 @@ export class LanesComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getLanes();
+    this.laneService.currentFilteredLanes.subscribe(lanes => lanes.subscribe(lanes => this.lanes=lanes));
   }
 
 }
